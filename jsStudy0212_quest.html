@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<script type="text/javascript">
+        document.write("hi");
+        document.write("Hi");
+
+//document.write("<br>")
+//for (var dan = 2; dan <= 9; dan++) {
+//  document.write(dan + "단<hr>");
+//  for (var i = 1; i <= 9; i++) {
+//    document.write(dan + " * " + i + " = " + (dan * i) + "<br>");
+//  }
+//} //출력문이 너무 길어서 주석처리
+
+document.write("<hr>")
+for (i = 1; i <= 5; i++) {
+  document.write("*" + "<br>");
+}
+
+document.write("<hr>")
+for (i = 1; i <= 5; i++) {
+  for (var j = 1; j <= 5; j++) {
+    document.write("*");
+  }
+  document.write("<br>")
+}
+document.write("<hr>")
+
+for (var r = 1; r <= 5; r++) {
+  for (var rr = 1; rr <= r; rr++) {
+    document.write("*");
+  }
+  document.write("<br>");
+}
+
+for (i = 1; i < 10; i++) {
+  if (i % 3 == 0) continue;
+  document.write(i + "<br>");
+} // 3,9빼기
+
+
+//시계의 움직임을 표현할 때.
+
+//for(h=1;h<=3;h++){
+//    for(m=0;m<60;m++){
+//        if(m==0){
+//            document.write(h+"시"+"<br>") //0분
+//       }else{
+//            document.write(h+"시"+m+"분"+"<br>"); //1~60분
+//        }
+//    }
+//} // 출력문이 너무 길어서 주석처리
+
+document.write("<hr>");
+
+//두개의 주사위를 던진다.
+// 눈의 합이 6이 되는 모든 경우의 수를 찾아라.
+var t =6;
+var num1 =0;
+var num2 =0;
+var cnt =0;
+
+
+
+for(num1=1;num1<=t;num1++) {
+    for(num2=1;num2<=t;num2++){
+        if(num1+num2==6){
+            var sum = (num1+num2);
+            document.write(num1+" + "+num2+" = "+sum+"<br>");
+        }  
+    }
+}
+document.write("전체 경우의 수는 "+(t*t)+"회 입니다.<br>")
+document.write("<hr>");
+for(num1=1;num1<=t;num1++) {
+    for(num2=1;num2<=t;num2++){
+        if(num1+num2==6){
+            var sum = (num1+num2);
+            document.write(num1+" + "+num2+" = "+sum+"<br>");
+            cnt++
+        }  
+    }
+}
+document.write("전체 경우의 수는 "+(t*t)+"회 중 합이 6이 되는 경우의 수는 "+cnt+"회 입니다.<br>")
+document.write("<hr>");
+// Q.  방정식 : 2x + 4y = 10
+// 방정식을 만족하는 x,y 해 계산 (단, 0<=x<=10, 0<=y<=10)
+
+for(x=0;x<=10;x++){
+    for(y=0;y<=10;y++){
+        if((2*x)+(4*y)==10){
+            document.write("x= "+x+", "+"y= "+y+"<br>");
+        }
+    }
+} 
+document.write("<hr>");
+// Q.  1 + (-2) + 3 + (-4)+ 5 +(-6)+... 
+//   => 총합 100이상 되는 숫자는?
+
+var a=0;
+var b=0;
+var n=0
+
+for(n=1;n<=10;n++){
+    var m =0;
+    if(n%2!=0){
+        a = n;
+        document.write(a+"<br>")
+    }else{
+        b = -n; 
+        document.write(b+"<br>")
+    }
+}
+
+//
+var sum = 0;
+	for(var i=1;true;i++){
+		if(i%2!=0){
+			sum += i;
+		}else{
+			//sum += -i;
+			sum += (-1 * i);
+		}
+		if(sum >= 100) break;
+	}
+		
+	document.write("i : "+i+", sum = "+sum+"<br>");
+
+
+
+
+
+</script>
+
+
+</head>
+<body>
+    
+</body>
+</html>
