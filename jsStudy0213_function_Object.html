@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function_Object</title>
+<script type="text/javascript">
+    document.write("first line.");
+    document.write("<hr>");
+    //객체 생성
+    //속성 property
+    //기능 method
+
+
+    var TV = new Object();
+    TV.name = "Samsung OLED TV";
+    TV.price = 20000;
+    TV.size = 120;
+    document.write("Model name: " +TV.name+"<br>");
+    document.write("Price: " +TV.price+"<br>");
+    document.write("Size: " +TV.size+"<br>");
+
+    var TV2 = new Object();
+    TV2.name = "LG TV";
+    TV2.price = 30000;
+    TV2.size = 150;
+    document.write("Model name: " +TV2.name+"<br>");
+    document.write("Price: " +TV2.price+"<br>");
+    document.write("Size: " +TV2.size+"<br>");
+    document.write("<hr>");
+    //기능
+    TV.power = false; // 전원의 기본값. TV는 평소에 꺼져있다 !! 전원을 on해서 사용하는거니까 false를 두는게 바람직.
+
+//    TV.OnOff = function(){
+//        if(TV.power){
+//            document.write("TV를 끄겠습니다.");
+//            TV.power = false;
+//        }else{
+//            document.write("TV를 키겠습니다.");
+//            TV.power = true;                        // 전원을 on하는것.
+//        }
+//        return TV.power;
+//   }                                              // 이게 기존에 학원에서 작성했던 코드. >> 작동이 의도대로 진행되지 않았다 ㅠㅠ
+
+//강사님 코드
+TV.OnOff = function(){
+    TV.power = !TV.power; // boolean 타입이기때문에, !를 붙이면 반전된다. 숫자에서 -를 넣는것과 같음.
+    if(TV.power){
+        //TV의 모델명을 출력
+        document.write(TV.name+"<br>")
+        // TV의 전원상태 출력
+        document.write((TV.power? "켜짐":"꺼짐")+"<br>")
+    }
+}
+TV.OnOff();
+document.write("<hr>");
+
+//휴대폰 객체를 생성하여, 친구에게 오늘 점심 뭐먹지 ? 메세지를 전송해보자.
+//속성: 전원, 연락처 /기능: 전원OnOff, 메세지 전송
+
+var Phone = new Object();
+Phone.power = false;
+Phone.name = "세석님의 iPhone"
+Phone.phoneBook = "양세석[010-8906-1243]";
+
+Phone.powerCheck = function(){
+    Phone.power = !Phone.power ;
+    if(Phone.power){
+        document.write("전원을 켰습니다."+"<br>")
+    }else{
+        document.write("전원이 켜져있습니다."+"<br>")
+    }
+    document.write(Phone.name+"<br>")
+}
+
+Phone.powerCheck();
+Phone.sendMessage = function(){
+    if(Phone.power){
+        document.write(Phone.phoneBook+" 님에게 점심뭐먹지? 라고 보냅니다."+"<br>");
+    }else{
+        document.write("전원을 켜주세요.<br>")
+    }
+}
+document.write("<hr>")
+
+Phone.sendMessage();
+//아래는 강사님 코드
+Phone.sendMessage_teacher = function(name,msg){
+    document.write(name+" : "+msg+"<br>");
+}
+if(Phone.power){
+    Phone.sendMessage_teacher("홍길동","편의점 ㄱㄱ");
+    Phone.sendMessage_teacher("김철수","ㅇㅋ");
+}else{
+    Phone.powerCheck();
+    Phone.sendMessage_teacher("홍길동","편의점 ㄱㄱ");
+    Phone.sendMessage_teacher("김철수","ㅇㅋ");
+}
+
+document.write("<hr>")
+document.write("<b>내장객체</b>")
+document.write("<hr>")
+
+//내장객체 Date
+// > 쓸일이 많을듯 ??
+
+var today = new Date();
+document.write(today+"<br>")                        // Mon Feb 13 2023 21:50:51 GMT+0900 (한국 표준시) > 출력결과
+document.write(today.getFullYear()+"년<br>")
+//document.write(today.getMonth()+"월<br>")         // getMonth() 함수는 0~11 범위의 결과를 불러옴. >> 0월 = 1월, 1월 = 2월 .. 11월 = 12월 이런식인거지. 
+document.write((today.getMonth()+1)+"월<br>")       // 그래서 +1을 해줘야 한다 ! 왜그런지는 잘,,, getDay()> 요일을 불러오는 함수도 그렇다. 0~6임.
+document.write(today.getDate()+"일<br>")
+//document.write(today.getDay()+"요일<br>");        //0~6 범위의 숫자로 나온다. 0이 월요일. > 제어문을 통하여 요일을 출력해야함.
+document.write(changeDay(today.getDay())+"요일<br>")
+function changeDay(day){
+    var result="";
+    switch(day){
+        case 0: result ="일"; break;
+        case 1: result ="월"; break;
+        case 2: result ="화"; break;
+        case 3: result ="수"; break;
+        case 4: result ="목"; break;
+        case 5: result ="금"; break;
+        case 6: result ="토"; break;
+    }
+    return result; // 안넣으면 undefinded 뜬다 !!
+}
+document.write("<hr>")
+// 오늘 날짜 출력하기
+document.write(today.getFullYear()+"년 "+
+                (today.getMonth()+1)+"월 " +       // 1더하는거 까먹었다. 다시함
+                today.getDate()+"일 "+
+                changeDay(today.getDay())+"요일"); // 메서드 표시 안해줘서 이상하게 나왔었다. 기능에는 () 꼭 붙이기
+
+document.write("<hr>")
+//특정 시점의 정보를 저장하는 법.
+var ourAnn = new Date("2019/12/26");
+document.write(ourAnn)
+
+// D-day 계산하기
+
+
+
+
+
+
+</script>
+
+
+</head>
+<body>
+    
+</body>
+</html>
